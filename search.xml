@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>numpy</title>
+      <link href="/posts/fa288682.html"/>
+      <url>/posts/fa288682.html</url>
+      
+        <content type="html"><![CDATA[<h1 id="1-编写Numpy程序"><a href="#1-编写Numpy程序" class="headerlink" title="1.编写Numpy程序"></a>1.编写Numpy程序</h1><h2 id="1-1创建一维数组"><a href="#1-1创建一维数组" class="headerlink" title="1.1创建一维数组"></a>1.1创建一维数组</h2><p>函数：array作用：通过列表或者元组创建数组(ndarray)</p><p>ndarray:多维数组对象，它是一系列<strong>同类型数据</strong>的集合，下标从0开始</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="built_in">list</span>=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="built_in">tuple</span>=(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line">a,b=np.array(<span class="built_in">list</span>),np.arrary(<span class="built_in">tuple</span>)</span><br><span class="line"><span class="built_in">print</span>(a,b)</span><br><span class="line">-----------</span><br><span class="line">out：[<span class="number">1</span> <span class="number">2</span> <span class="number">3</span>] [<span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]</span><br></pre></td></tr></table></figure><h2 id="1-2数据类型"><a href="#1-2数据类型" class="headerlink" title="1.2数据类型"></a>1.2数据类型</h2><h3 id="1-2-1-指定数据类型"><a href="#1-2-1-指定数据类型" class="headerlink" title="1.2.1 指定数据类型"></a>1.2.1 指定数据类型</h3><p>函数：dtype 作用：指定数据类型或查看数据类型</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a.dtype</span><br><span class="line">---------</span><br><span class="line">out: dtype(<span class="string">&#x27;int32&#x27;</span>)</span><br><span class="line">a = np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],dtype=<span class="built_in">float</span>)</span><br><span class="line">a.dtype</span><br></pre></td></tr></table></figure><h3 id="1-2-2-更多的数据类型"><a href="#1-2-2-更多的数据类型" class="headerlink" title="1.2.2 更多的数据类型"></a>1.2.2 更多的数据类型</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">d=np.array([<span class="number">1</span>+<span class="number">2j</span>,<span class="number">3</span>+<span class="number">4j</span>,<span class="number">5</span>+<span class="number">6j</span>])</span><br><span class="line">d.dtype</span><br><span class="line">---------</span><br><span class="line">out:dtype(<span class="string">&#x27;complex128&#x27;</span>)</span><br></pre></td></tr></table></figure><h3 id="1-2-3-类型代码和字节序"><a href="#1-2-3-类型代码和字节序" class="headerlink" title="1.2.3 类型代码和字节序"></a>1.2.3 类型代码和字节序</h3><p>‘&lt;U5’表示长度5 的Unicode编码字符串，&lt;表示小端字节序，&gt;表示大端字节序</p><p>类型代码是数据类型写法的简化</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dt=np.dtype(<span class="string">&#x27;&lt;u4&#x27;</span>)<span class="comment">#创建一个dtype对象</span></span><br><span class="line">a=np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],dtype=dt)</span><br></pre></td></tr></table></figure><h3 id="1-2-4-类型转换"><a href="#1-2-4-类型转换" class="headerlink" title="1.2.4 类型转换"></a>1.2.4 类型转换</h3><p>函数：astype()作用：转换数据类型</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">c=np.array([<span class="string">&#x27;1.2&#x27;</span>,<span class="string">&#x27;1.3&#x27;</span>,<span class="string">&#x27;-3.5&#x27;</span>])</span><br><span class="line">c.astype(<span class="string">&#x27;f4&#x27;</span>)</span><br><span class="line"><span class="comment">#unicode 转换为 float64</span></span><br></pre></td></tr></table></figure><h3 id="1-2-5-数学公式"><a href="#1-2-5-数学公式" class="headerlink" title="1.2.5 数学公式"></a>1.2.5 数学公式</h3><p>$$<br>\sigma_2+\theta^2&#x3D;m_2<br>$$</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/posts/4a17b156.html"/>
+      <url>/posts/4a17b156.html</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
+</search>
